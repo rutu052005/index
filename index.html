@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Welcome — UltraEdit-style Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container narrow">
+        <h1 class="brand">UltraEdit Demo</h1>
+        <nav aria-label="Primary" class="header-nav">
+            <a href="#" id="navHome">Home</a>
+            <a href="#" id="navSignup">Sign up</a>
+        </nav>
+            <div id="profileBadge" class="profile-badge" hidden>
+                <span id="profileName" class="profile-name"></span>
+                <button id="profileLogout" class="btn-ghost small">Logout</button>
+            </div>
+    </div>
+</header>
+
+<main>
+    <!-- LOGIN PAGE -->
+    <section class="container" id="loginPage" aria-labelledby="loginTitle">
+        <h2 id="loginTitle">Sign in</h2>
+        <div id="loginMsg" class="form-message" role="alert" aria-live="polite"></div>
+
+        <form id="loginForm" novalidate>
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" name="email" required>
+
+            <label for="loginPassword">Password</label>
+            <div class="password-row">
+                <input type="password" id="loginPassword" name="password" required minlength="6">
+                <button type="button" class="pw-toggle" data-target="loginPassword" aria-label="Show password">Show</button>
+            </div>
+
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+
+        <p class="muted centered">
+            Don't have an account? <a href="#" id="showSignupLink">Create one</a>
+        </p>
+    </section>
+
+
+    <!-- SIGNUP PAGE -->
+    <section class="container" id="signupPage" aria-labelledby="signupTitle" hidden>
+        <h2 id="signupTitle">Create account</h2>
+        <div id="signupMsg" class="form-message" role="alert" aria-live="polite"></div>
+
+        <form id="signupForm" novalidate>
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="signupEmail">Email</label>
+            <input type="email" id="signupEmail" name="email" required>
+
+            <label for="signupPassword">Password</label>
+            <div class="password-row">
+                <input type="password" id="signupPassword" name="password" required minlength="6">
+                <button type="button" class="pw-toggle" data-target="signupPassword" aria-label="Show password">Show</button>
+            </div>
+
+            <label for="signupPasswordConfirm">Confirm password</label>
+            <div class="password-row">
+                <input type="password" id="signupPasswordConfirm" name="passwordConfirm" required minlength="6">
+                <button type="button" class="pw-toggle" data-target="signupPasswordConfirm" aria-label="Show password">Show</button>
+            </div>
+
+            <button type="submit" class="btn-primary">Create account</button>
+        </form>
+
+        <p class="muted centered">
+            Already have an account? <a href="#" id="showLoginLink">Login</a>
+        </p>
+    </section>
+
+
+    <!-- DASHBOARD PAGE -->
+    <section class="dashboard" id="dashboardPage" hidden>
+        <!-- Sidebar -->
+        <aside class="sidebar" aria-label="Sidebar">
+            <h3 class="sidebar-title">UltraEdit UI</h3>
+            <nav class="sidebar-nav">
+                <a href="#" id="sidebarHomeLink" data-section="home">Home</a>
+                <a href="#" id="sidebarFilesLink" data-section="files">Files</a>
+                <a href="#" id="sidebarEditLink" data-section="edit">Edit</a>
+                <a href="#" id="sidebarProjectsLink" data-section="projects">Projects</a>
+            </nav>
+            <button id="logoutBtn" class="btn-ghost">Logout</button>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-nav">
+                <h2 id="dashboardGreeting">Welcome to your dashboard</h2>
+            </div>
+
+            <div id="dashboardSectionContent">
+                <section id="homeSection" class="dashboard-section">
+                    <h3>Overview</h3>
+                    <p class="muted">Quick actions and recent items.</p>
+                    <div id="recentFiles" class="cards"></div>
+                </section>
+
+                <section id="filesSection" class="dashboard-section" hidden>
+                    <div class="files-layout">
+                        <aside class="files-panel">
+                            <div class="files-toolbar">
+                                <button id="btnNewFile" class="btn-primary">New file</button>
+                            </div>
+                            <ul id="filesList" class="files-list" aria-live="polite"></ul>
+                        </aside>
+
+                        <div class="editor-panel">
+                            <input id="fileName" class="file-name" placeholder="Untitled.txt">
+                            <textarea id="fileContent" class="file-content" placeholder="Start typing your file..."></textarea>
+                            <div class="file-actions">
+                                <button id="btnSaveFile" class="btn-primary">Save</button>
+                                <button id="btnDeleteFile" class="btn-ghost">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="editSection" class="dashboard-section" hidden>
+                    <h3>Quick edit</h3>
+                    <p class="muted">Open a file from Files to edit here.</p>
+                </section>
+
+                <section id="projectsSection" class="dashboard-section" hidden>
+                    <h3>Projects</h3>
+                    <p class="muted">Manage your projects (mock data).</p>
+                    <ul id="projectsList" class="projects-list"></ul>
+                </section>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container narrow muted">© Demo project — not for production</div>
+</footer>
+
+<!-- Toast notifications -->
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="script.js"></script>
+</body>
+</html>
